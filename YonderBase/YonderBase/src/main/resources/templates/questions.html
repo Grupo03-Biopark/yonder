@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Questions</title>
+</head>
+<body>
+    <h1>Questions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cabecalho</th>
+                <th>Dificuldade</th>
+                <th>Tipo Prova ID</th>
+                <th>Niveis ID</th>
+                <th>Audio</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pergunta : ${perguntas}">
+                <td th:text="${pergunta.id}"></td>
+                <td th:text="${pergunta.cabecalho}"></td>
+                <td th:text="${pergunta.dificuldade}"></td>
+                <td th:text="${pergunta.tipoProvaId}"></td>
+                <td th:text="${pergunta.niveisId}"></td>
+                <td th:text="${pergunta.audio}"></td>
+                <td>
+                    <form th:action="@{/perguntas/{id}(id=${pergunta.id})}" method="post">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/perguntas/new}">Add New Question</a>
+</body>
+</html>

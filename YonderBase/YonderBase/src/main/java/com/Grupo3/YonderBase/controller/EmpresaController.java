@@ -21,16 +21,16 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
 
-    // @GetMapping("/")
-    // public String index(){
-    //     return "index";
-    // }
-
     @GetMapping("/")
-        public String index(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "registro";
+    public String index(){
+        return "questions";
     }
+
+    // @GetMapping("/")
+    //     public String index(Model model) {
+    //     model.addAttribute("usuario", new Usuario());
+    //     return "registro";
+    // }
 
     @GetMapping("/empresas")
         public String getEmpresas(Model model) {
