@@ -10,30 +10,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Grupo3.YonderBase.model.Empresa;
-import com.Grupo3.YonderBase.model.Usuario;
 import com.Grupo3.YonderBase.service.EmpresaService;
-import com.Grupo3.YonderBase.service.UsuarioService;
-
 
 @Controller
 public class EmpresaController {
-    
+
     @Autowired
     private EmpresaService empresaService;
 
     @GetMapping("/")
-    public String index(){
-        return "questions";
+    public String index() {
+        return "lista-perguntas";
     }
 
     // @GetMapping("/")
-    //     public String index(Model model) {
-    //     model.addAttribute("usuario", new Usuario());
-    //     return "registro";
+    // public String index(Model model) {
+    // model.addAttribute("usuario", new Usuario());
+    // return "registro";
     // }
 
     @GetMapping("/empresas")
-        public String getEmpresas(Model model) {
+    public String getEmpresas(Model model) {
         List<Empresa> empresas = empresaService.findAll();
         model.addAttribute("empresas", empresas);
         return "empresas";
@@ -41,12 +38,12 @@ public class EmpresaController {
 
     @PostMapping("/cadastrarEmpresa")
     public String cadastrarEmpresa(@RequestParam("razaoSocial") String razaoSocial,
-                                   @RequestParam("cnpj") String cnpj,
-                                   @RequestParam("cep") String cep,
-                                   @RequestParam("logradouro") String logradouro,
-                                   @RequestParam("bairro") String bairro,
-                                   @RequestParam("numero") Long numero,
-                                   @RequestParam("complemento") String complemento) {
+            @RequestParam("cnpj") String cnpj,
+            @RequestParam("cep") String cep,
+            @RequestParam("logradouro") String logradouro,
+            @RequestParam("bairro") String bairro,
+            @RequestParam("numero") Long numero,
+            @RequestParam("complemento") String complemento) {
 
         Empresa empresa = new Empresa(razaoSocial, cnpj, cep, logradouro, bairro, numero, complemento);
         empresaService.save(empresa);
