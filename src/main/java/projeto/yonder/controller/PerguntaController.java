@@ -26,14 +26,14 @@ public class PerguntaController {
         model.addAttribute("data", perguntaRepository.findAll( PageRequest.of(page, 5, Sort.by(
                 Sort.Order.asc("id")))));
         model.addAttribute("currentPage", page);
-        return "TelaVisualizarPerguntas";
+        return "TelaVisualisarPerguntas";
     }
 
     @GetMapping("/pergunta/{id}")
     public String showPergunta(@PathVariable Long id, Model model) {
         Pergunta pergunta = perguntaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Pergunta inválida"));
         model.addAttribute("pergunta", pergunta);
-        return "pergunta(:";
+        return "pergunta";
     }
 
     @PostMapping("/savePergunta")
