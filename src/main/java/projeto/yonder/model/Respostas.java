@@ -1,10 +1,12 @@
 package projeto.yonder.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 
 @Entity
-public class Respostas {
+public class Respostas implements List<Respostas> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
