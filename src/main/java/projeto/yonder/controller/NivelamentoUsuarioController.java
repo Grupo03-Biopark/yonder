@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import projeto.yonder.model.NivelamentoUsuario;
+import projeto.yonder.model.Usuario;
 import projeto.yonder.service.NivelamentoUsuarioService;
 
 @Controller
@@ -22,4 +23,18 @@ public class NivelamentoUsuarioController {
         model.addAttribute("niveisId", notas);
         return "TelaVisaoProvas";
     }
+
+
+
+
+
+        @GetMapping("/versefezprova")
+    public int verSeUsuarioFoiAvaliado(@PathVariable Long id, @ModelAttribute("nivelamentoUsuario") NivelamentoUsuario nivelamentoUsuario) {
+        List<NivelamentoUsuario> nivelamentoUsuarios = nivelamentoUsuarioService.getTop50Usuarios();
+        if(nivelamentoUsuarios.isEmpty()){
+        return 1;
+        }
+    }
 }
+
+

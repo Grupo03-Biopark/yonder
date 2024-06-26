@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import projeto.yonder.model.Usuario;
 import projeto.yonder.service.UsuarioService;
 
@@ -33,6 +34,13 @@ public class UsuarioController {
 
     @GetMapping("/listar")
     public String listarUsuarios(Model model) {
+        List<Usuario> usuarios = usuarioService.getTop50Usuarios();
+        model.addAttribute("usuarios", usuarios);
+        return "TelaListarUsuarios";
+    }
+
+    @GetMapping("/listar")
+    public String verUsuariosAvaliados(@PathVariable Long id, @ModelAttribute("usuarios") Usuario usuario) {
         List<Usuario> usuarios = usuarioService.getTop50Usuarios();
         model.addAttribute("usuarios", usuarios);
         return "TelaListarUsuarios";
