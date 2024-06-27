@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../static/css/detalhesUsuarios.css" th:href="@{/css/detalhesUsuarios.css}">
 </head>
 <body>
-    <!--
     <div class="container">
         <h1>Detalhes do Usuário</h1>
         <div th:if="${usuario != null}">
@@ -19,34 +18,5 @@
         </div>
         <a th:href="@{/usuario/usuarios}">Voltar à Lista de Usuários</a>
     </div>
--->
-
-
-    <div class="secao4-div-card" th:if="${usuario != null}">
-        <div class="cardmenor"> <p>Nome: <span th:text="${usuario.nome}"></span></p></div>
-        <div class="juntanota">
-        <div class="card">READING
-            <hr class="hrcard">
-            <div class="nota" >
-                <p th:text="${usuario.notaReading}"></p>
-            </div>
-        </div>
-        <div class="card">LISTENING
-            <hr class="hrcard">
-            <div class="nota"  >
-                <p  th:text="${usuario.notaListening}"></p>
-            </div>
-           
-        </div>
-        <div class="card">WRITING
-            <hr class="hrcard">
-            <div class="nota"  >
-                <p th:text="${usuario.notaWriting}"></p>
-            </div>
-        </div>
-    </div>
-    <div ><a th:href="@{/usuario/usuarios}">Voltar à Lista de Usuários</a></div>
-    </div>
-
 </body>
 </html>
